@@ -87,7 +87,7 @@ public class ActeurRepositoryTest {
 	 */
 	@Test
 	public void testExtraireActeursParPays() {
-		TypedQuery<Acteur> query = em.createQuery("SELECT DISTINCT a FROM Acteur a JOIN a.roles r JOIN r.film.pays p WHERE p.nom = ?1", Acteur.class);
+		TypedQuery<Acteur> query = em.createQuery("SELECT DISTINCT a FROM Acteur a JOIN a.roles r JOIN r.film f JOIN f.pays p WHERE p.nom = ?1", Acteur.class);
 		query.setParameter(1, "France");
 		List<Acteur> acteurs = query.getResultList();
 		assertEquals(158, acteurs.size());
